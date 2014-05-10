@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01F0F0A8-9C6D-47D9-AF7D-6993E98C248C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdvancedRenamer</RootNamespace>
+    <AssemblyName>AdvancedRenamer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Apex.WinForms">
+      <HintPath>..\packages\SharpShellTools.2.1.0.1\lib\Apex.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="ServerManager">
+      <HintPath>..\packages\SharpShellTools.2.1.0.1\lib\ServerManager.exe</HintPath>
+    </Reference>
+    <Reference Include="SharpShell, Version=2.1.0.0, Culture=neutral, PublicKeyToken=f14dc899472fe6fb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SharpShellTools.2.1.0.1\lib\SharpShell.dll</HintPath>
+    </Reference>
+    <Reference Include="srm">
+      <HintPath>..\packages\SharpShellTools.2.1.0.1\lib\srm.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContextMenuInstaller.cs" />
+    <Compile Include="FileTree\FileSystemTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileTree\FileSystemTree.Designer.cs">
+      <DependentUpon>FileSystemTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileTree\DirectoryTreeNode.cs" />
+    <Compile Include="FileTree\ShellManager.cs" />
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regexes\RegexMatcher.cs" />
+    <Compile Include="RenamePattern.cs" />
+    <Compile Include="RenameSuggestion.cs" />
+    <Compile Include="TheTVDB\FrmRenamePattern.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheTVDB\FrmRenamePattern.Designer.cs">
+      <DependentUpon>FrmRenamePattern.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheTVDB\FrmTvDBSearchResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheTVDB\FrmTvDBSearchResults.Designer.cs">
+      <DependentUpon>FrmTvDBSearchResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheTVDB\TvDBCachedShow.cs" />
+    <Compile Include="TheTVDB\TvDBException.cs" />
+    <Compile Include="TheTVDB\TvDBApi.cs" />
+    <Compile Include="TheTVDB\TvDBEpisode.cs" />
+    <Compile Include="TheTVDB\TvDBMatcher.cs" />
+    <Compile Include="TheTVDB\TvDBSearchResult.cs" />
+    <Compile Include="TheTVDB\TvDBSeason.cs" />
+    <Compile Include="TheTVDB\TvDBShow.cs" />
+    <EmbeddedResource Include="FileTree\FileSystemTree.resx">
+      <DependentUpon>FileSystemTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TheTVDB\FrmRenamePattern.resx">
+      <DependentUpon>FrmRenamePattern.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheTVDB\FrmTvDBSearchResults.resx">
+      <DependentUpon>FrmTvDBSearchResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="key.snk" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShellContextMenu.cs\ShellContextMenu.csproj">
+      <Project>{201afa8c-fc6c-4c27-b6fd-2f8888292847}</Project>
+      <Name>ShellContextMenu</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
